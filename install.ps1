@@ -1,6 +1,6 @@
 # install.ps1 - Silent installer that auto-runs main.bat
 param(
-    [string]$InstallPath = "$env:USERPROFILE\Xeno"
+    [string]$InstallPath = "$env:USERPROFILE\XenoVuln"
 )
 
 # Create installation directory
