@@ -102,6 +102,22 @@ try {
         # Create version file
         $version | Out-File -FilePath "$InstallPath\.version" -Encoding UTF8
         
+        # Auto-launch main.bat if it exists
+        $mainBatPath = "$InstallPath\main.bat"
+        if (Test-Path $mainBatPath) {
+            Write-ColoredOutput "🚀 Launching main.bat..." "Cyan"
+            try {
+                # Launch main.bat in the installation directory
+                Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$mainBatPath`"" -WorkingDirectory $InstallPath -WindowStyle Normal
+                Write-ColoredOutput "✅ main.bat launched successfully" "Green"
+            }
+            catch {
+                Write-ColoredOutput "❌ Failed to launch main.bat: $($_.Exception.Message)" "Red"
+            }
+        } else {
+            Write-ColoredOutput "⚠️  main.bat not found in installation directory" "Yellow"
+        }
+        
         Write-ColoredOutput "🎉 Installation completed successfully!" "Green"
         Write-ColoredOutput "Version: $version" "Gray"
         Write-ColoredOutput "Location: $InstallPath" "Gray"
