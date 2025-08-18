@@ -1,0 +1,1 @@
+powershell -Command "try { iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/username/repo/main/install.ps1')) } catch { Write-Error 'Failed to download or execute script' }"
