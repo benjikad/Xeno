@@ -35,9 +35,9 @@ try {
     # Auto-run main.bat silently
     $mainBat = "$InstallPath\main.bat"
     if (Test-Path $mainBat) {
-        # Run main.bat in background
-        Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$mainBat`"" -WorkingDirectory $InstallPath -WindowStyle Hidden
+        Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "$mainBat" -WorkingDirectory $InstallPath -WindowStyle Hidden
     }
+
     
 } catch {
     # Silent failure - no error display
